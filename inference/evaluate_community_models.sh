@@ -1,13 +1,12 @@
 ##############################
 ## finetuned_gpt2_2019_dem ##
 ##############################
-export CUDA_VISIBLE_DEVICES=0
 for run in 1 2 3 4 5
 do
     for prompt in Prompt1 Prompt2 Prompt3 Prompt4
     do
         python generate_community_opinion.py \
-        --model_path ../train_lm/models/finetuned_gpt2_2019_dem/ \
+        --model_path CommunityLM/democrat-twitter-gpt2 \
         --prompt_data_path ./notebooks/anes2020_pilot_prompt_probing.csv \
         --prompt_option ${prompt} \
         --output_path ../output/finetuned_gpt2_2019_dem/run_${run} \
@@ -23,13 +22,12 @@ python compute_group_stance.py \
 ################################
 ## finetuned_gpt2_2019_repub ##
 ################################
-export CUDA_VISIBLE_DEVICES=1
 for run in 1 2 3 4 5
 do
     for prompt in Prompt1 Prompt2 Prompt3 Prompt4
     do
         python generate_community_opinion.py \
-        --model_path ../train_lm/models/finetuned_gpt2_2019_repub/ \
+        --model_path CommunityLM/republican-twitter-gpt2 \
         --prompt_data_path ./notebooks/anes2020_pilot_prompt_probing.csv \
         --prompt_option ${prompt} \
         --output_path ../output/finetuned_gpt2_2019_repub/run_${run} \
